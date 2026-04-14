@@ -1,0 +1,51 @@
+Patient_ID,First_Name,Last_Name,DOB,Sex,Injury_or_Complaint,Dispatch_Time,Triage_Level,Arrival_Mode,Required_Department,ETA_Hosp_A_Mins,ETA_Hosp_B_Mins,ETA_Hosp_C_Mins
+10009,Robert,Garcia,1975-08-14,M,Chest pain / Palpitations,2026-03-19 7:12:00,2,Ambulance,Critical Care,14,22,10
+10010,Linda,Martinez,1952-11-03,F,Fall / Suspected hip fracture,2026-03-19 7:45:00,2,Ambulance,Main ED,25,18,30
+10011,William,Robinson,1990-02-28,M,Motor vehicle accident / Whiplash,2026-03-19 8:05:00,3,Walk-in,Main ED,8,15,12
+10012,Mary,Clark,1983-06-17,F,Severe migraine,2026-03-19 8:22:00,4,Walk-in,Fast Track,12,8,20
+10013,Richard,Rodriguez,2001-09-09,M,Laceration to forehead,2026-03-19 8:50:00,3,Walk-in,Fast Track,5,19,14
+10014,Susan,Lewis,1968-12-21,F,Shortness of breath,2026-03-19 9:15:00,2,Ambulance,Critical Care,18,25,22
+10015,Joseph,Lee,1945-04-05,M,Stroke symptoms,2026-03-19 9:18:00,1,Ambulance,Critical Care,10,12,8
+10016,Margaret,Walker,1979-07-30,F,Abdominal pain / Nausea,2026-03-19 9:40:00,3,Walk-in,Main ED,20,15,18
+10017,Thomas,Hall,2010-01-15,M,Asthma exacerbation,2026-03-19 9:55:00,2,Walk-in,Pediatrics,15,22,25
+10018,Jessica,Allen,1995-10-10,F,Sprained knee,2026-03-19 10:05:00,4,Walk-in,Fast Track,8,10,14
+10019,Charles,Young,1988-03-22,M,Allergic reaction / Hives,2026-03-19 10:12:00,3,Walk-in,Main ED,12,18,15
+10020,Sarah,Hernandez,1960-05-18,F,High blood pressure,2026-03-19 10:25:00,3,Walk-in,Main ED,22,20,12
+10021,Christopher,King,1982-12-07,M,Back pain,2026-03-19 10:30:00,4,Walk-in,Fast Track,18,12,8
+10022,Karen,Wright,1955-08-29,F,Dizziness and weakness,2026-03-19 10:45:00,3,Ambulance,Main ED,15,25,30
+10023,Daniel,Lopez,2005-04-11,M,Sports injury / Dislocated shoulder,2026-03-19 10:55:00,3,Walk-in,Main ED,10,14,18
+10024,Nancy,Hill,1972-09-14,F,Fever and chills,2026-03-19 11:02:00,4,Walk-in,Fast Track,14,20,12
+10025,Matthew,Scott,1998-11-20,M,Animal bite,2026-03-19 11:15:00,4,Walk-in,Fast Track,8,15,22
+10026,Betty,Green,1940-02-02,F,Altered mental status,2026-03-19 11:20:00,2,Ambulance,Psychiatric ER,25,18,14
+10027,Anthony,Adams,1985-06-25,M,Workplace injury / Crush injury to foot,2026-03-19 11:35:00,2,Ambulance,Critical Care,12,10,8
+10028,Sandra,Baker,1993-01-08,F,Panic attack,2026-03-19 11:42:00,4,Walk-in,Psychiatric ER,15,22,18
+10029,Mark,Gonzalez,1965-10-31,M,Chest pain,2026-03-19 11:45:00,1,Ambulance,Critical Care,10,14,20
+10030,Ashley,Nelson,2002-07-19,F,Urinary tract infection symptoms,2026-03-19 11:50:00,5,Walk-in,Fast Track,22,15,10
+10031,Donald,Carter,1970-03-12,M,Kidney stones,2026-03-19 12:01:00,3,Walk-in,Main ED,14,18,12
+10032,Kimberly,Mitchell,1980-09-05,F,Laceration to leg,2026-03-19 12:08:00,3,Walk-in,Fast Track,8,25,15
+10033,Steven,Perez,1958-12-28,M,Diabetic emergency / Hypoglycemia,2026-03-19 12:15:00,2,Ambulance,Main ED,18,12,22
+10034,Emily,Roberts,1996-05-16,F,Eye injury / Foreign body,2026-03-19 12:20:00,4,Walk-in,Fast Track,15,20,18
+10035,Paul,Turner,1987-02-10,M,Dental abscess / Severe pain,2026-03-19 12:22:00,5,Walk-in,Fast Track,10,14,25
+10036,Donna,Phillips,1963-08-04,F,Suspected pneumonia,2026-03-19 12:25:00,3,Walk-in,Main ED,20,18,15
+10037,Andrew,Campbell,2008-11-17,M,Broken arm,2026-03-19 12:30:00,3,Walk-in,Main ED,12,22,10
+10038,Michelle,Parker,1976-04-23,F,Food poisoning,2026-03-19 12:32:00,4,Walk-in,Main ED,18,15,12
+10039,Joshua,Evans,1991-01-30,M,Burns (2nd degree) to arm,2026-03-19 12:35:00,3,Walk-in,Main ED,25,20,18
+10040,Carol,Edwards,1950-10-12,F,Syncope (fainting),2026-03-19 12:38:00,2,Ambulance,Main ED,14,10,22
+10041,Kevin,Collins,1984-06-08,M,Motorcycle accident / Multiple trauma,2026-03-19 12:40:00,1,Helicopter,Critical Care,5,8,6
+10042,Amanda,Stewart,1999-03-27,F,Severe allergic reaction / Anaphylaxis,2026-03-19 12:42:00,1,Ambulance,Critical Care,12,15,10
+10043,Brian,Sanchez,1973-12-11,M,Gastrointestinal bleeding,2026-03-19 12:45:00,2,Ambulance,Critical Care,18,22,14
+10044,Melissa,Morris,1989-08-01,F,Persistent vomiting,2026-03-19 12:48:00,4,Walk-in,Main ED,20,18,25
+10045,George,Rogers,1966-02-19,M,Irregular heartbeat,2026-03-19 12:50:00,2,Ambulance,Main ED,15,12,18
+10046,Deborah,Reed,1957-07-06,F,Severe dehydration,2026-03-19 12:52:00,3,Walk-in,Main ED,10,25,12
+10047,Edward,Cook,1994-11-25,M,Stab wound to thigh,2026-03-19 12:55:00,2,Ambulance,Critical Care,8,14,20
+10048,Stephanie,Morgan,1981-05-14,F,Concussion,2026-03-19 12:58:00,3,Walk-in,Main ED,12,18,22
+10049,Ronald,Bell,1948-09-02,M,Sepsis protocol,2026-03-19 13:00:00,1,Ambulance,Critical Care,25,15,10
+10050,Rebecca,Murphy,2003-12-30,F,Dislocated finger,2026-03-19 13:02:00,5,Walk-in,Fast Track,18,20,14
+10051,Timothy,Bailey,1978-04-18,M,Renal colic,2026-03-19 13:05:00,3,Walk-in,Main ED,14,12,18
+10052,Sharon,Rivera,1969-10-22,F,Asthma exacerbation,2026-03-19 13:08:00,3,Walk-in,Main ED,20,18,15
+10053,Jason,Cooper,1986-01-07,M,Headache / Rule out hemorrhage,2026-03-19 13:09:00,2,Ambulance,Critical Care,12,22,25
+10054,Cynthia,Richardson,1954-06-13,F,Palpitations,2026-03-19 13:10:00,3,Walk-in,Main ED,15,10,12
+10055,Jeffrey,Cox,1992-03-04,M,Laceration to hand,2026-03-19 13:11:00,4,Walk-in,Fast Track,8,14,20
+10056,Kathleen,Howard,1971-11-16,F,Sciatica flare-up,2026-03-19 13:12:00,5,Walk-in,Fast Track,22,18,15
+10057,Ryan,Ward,2000-08-09,M,Suspected ankle fracture,2026-03-19 13:12:30,4,Walk-in,Main ED,14,25,10
+10058,Shirley,Torres,1983-02-24,F,Ear infection / Severe pain,2026-03-19 13:13:00,5,Walk-in,Fast Track,18,12,22
