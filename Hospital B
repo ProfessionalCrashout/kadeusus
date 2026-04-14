@@ -1,0 +1,21 @@
+Staff_Name,Role,Shift_Hours,Assigned_Area,Area_Total_Beds,Area_Available_Beds,Free_For_New_Patient
+Dr. Alan Grant,Doctor,06:00-18:00,Critical Care,5,0,No
+RN Ellie Sattler,Nurse,06:00-18:00,Critical Care,5,0,No
+RN Ian Malcolm,Nurse,06:00-18:00,Critical Care,5,0,No
+Dr. John Hammond,Doctor,06:00-18:00,Main ED,15,4,Yes
+RN Ray Arnold,Nurse,06:00-18:00,Main ED,15,4,Yes
+RN Dennis Nedry,Nurse,06:00-18:00,Main ED,15,4,No
+Dr. Henry Wu,Doctor,06:00-18:00,Pediatrics,8,3,Yes
+RN Robert Muldoon,Nurse,06:00-18:00,Pediatrics,8,3,Yes
+Dr. Lex Murphy,Doctor,06:00-18:00,Urgent Care,10,8,Yes
+RN Tim Murphy,Nurse,06:00-18:00,Urgent Care,10,8,Yes
+Dr. Dana Scully,Doctor,18:00-06:00,Critical Care,5,2,Yes
+RN Fox Mulder,Nurse,18:00-06:00,Critical Care,5,2,Yes
+RN Walter Skinner,Nurse,18:00-06:00,Critical Care,5,2,No
+Dr. John Doggett,Doctor,18:00-06:00,Main ED,15,1,No
+RN Monica Reyes,Nurse,18:00-06:00,Main ED,15,1,Yes
+RN Alex Krycek,Nurse,18:00-06:00,Main ED,15,1,No
+Dr. Arthur Dales,Doctor,18:00-06:00,Pediatrics,8,6,Yes
+RN Richard Langly,Nurse,18:00-06:00,Pediatrics,8,6,Yes
+Dr. Melvin Frohike,Doctor,18:00-06:00,Urgent Care,10,9,Yes
+RN John Byers,Nurse,18:00-06:00,Urgent Care,10,9,Yes

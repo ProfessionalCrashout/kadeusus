@@ -1,0 +1,23 @@
+Staff_Name,Role,Shift_Hours,Assigned_Area,Area_Total_Beds,Area_Available_Beds,Free_For_New_Patient
+Dr. Sarah Chen,Doctor,07:00-19:00,Trauma,4,1,Yes
+RN Marcus Vance,Nurse,07:00-19:00,Trauma,4,1,No
+RN Chloe Price,Nurse,07:00-19:00,Trauma,4,1,Yes
+Dr. Michael Brown,Doctor,07:00-19:00,Acute Care,10,2,No
+RN David Johnson,Nurse,07:00-19:00,Acute Care,10,2,Yes
+RN Priya Patel,Nurse,07:00-19:00,Acute Care,10,2,No
+Dr. John Carter,Doctor,07:00-19:00,Fast Track,6,4,Yes
+RN Susan Lewis,Nurse,07:00-19:00,Fast Track,6,4,Yes
+RN Richard Fox,Nurse,07:00-19:00,Fast Track,6,4,Yes
+Dr. Meredith Grey,Doctor,07:00-19:00,Triage,3,0,No
+RN Thomas Hall,Nurse,07:00-19:00,Triage,3,0,No
+Dr. Gregory House,Doctor,19:00-07:00,Trauma,4,3,Yes
+RN Allison Cameron,Nurse,19:00-07:00,Trauma,4,3,Yes
+RN Robert Chase,Nurse,19:00-07:00,Trauma,4,3,No
+Dr. Lisa Cuddy,Doctor,19:00-07:00,Acute Care,10,6,Yes
+RN Eric Foreman,Nurse,19:00-07:00,Acute Care,10,6,Yes
+RN James Wilson,Nurse,19:00-07:00,Acute Care,10,6,Yes
+Dr. Peter Benton,Doctor,19:00-07:00,Fast Track,6,5,Yes
+RN Carol Hathaway,Nurse,19:00-07:00,Fast Track,6,5,Yes
+RN Abby Lockhart,Nurse,19:00-07:00,Fast Track,6,5,Yes
+Dr. Mark Greene,Doctor,19:00-07:00,Triage,3,1,Yes
+RN Samantha Taggart,Nurse,19:00-07:00,Triage,3,1,No
