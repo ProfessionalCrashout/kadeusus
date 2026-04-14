@@ -1,0 +1,19 @@
+Staff_Name,Role,Shift_Hours,Assigned_Area,Area_Total_Beds,Area_Available_Beds,Free_For_New_Patient
+Dr. John Dorian,Doctor,08:00-20:00,General ED,12,5,Yes
+RN Elliot Reid,Nurse,08:00-20:00,General ED,12,5,Yes
+RN Carla Espinosa,Nurse,08:00-20:00,General ED,12,5,No
+Dr. Christopher Turk,Doctor,08:00-20:00,Trauma,3,0,No
+RN Laverne Roberts,Nurse,08:00-20:00,Trauma,3,0,No
+Dr. Perry Cox,Doctor,08:00-20:00,Psychiatric ER,4,1,Yes
+RN Paul Flowers,Nurse,08:00-20:00,Psychiatric ER,4,1,Yes
+Dr. Bob Kelso,Doctor,08:00-20:00,Fast Track,8,8,Yes
+RN Todd Quinlan,Nurse,08:00-20:00,Fast Track,8,8,Yes
+Dr. Will Halstead,Doctor,20:00-08:00,General ED,12,2,No
+RN Maggie Lockwood,Nurse,20:00-08:00,General ED,12,2,Yes
+RN April Sexton,Nurse,20:00-08:00,General ED,12,2,No
+Dr. Connor Rhodes,Doctor,20:00-08:00,Trauma,3,1,Yes
+RN Natalie Manning,Nurse,20:00-08:00,Trauma,3,1,Yes
+Dr. Daniel Charles,Doctor,20:00-08:00,Psychiatric ER,4,2,Yes
+RN Ethan Choi,Nurse,20:00-08:00,Psychiatric ER,4,2,Yes
+Dr. Sarah Reese,Doctor,20:00-08:00,Fast Track,8,6,Yes
+RN Noah Sexton,Nurse,20:00-08:00,Fast Track,8,6,Yes
