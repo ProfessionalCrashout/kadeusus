@@ -1,0 +1,366 @@
+import csv
+import json
+from datetime import datetime
+from dateutil import parser
+
+CADUCEUS_ART = r"""
+  ██████╗ █████╗ ██████╗ ██╗   ██╗ ██████╗███████╗██╗   ██╗███████╗
+ ██╔════╝██╔══██╗██╔══██╗██║   ██║██╔════╝██╔════╝██║   ██║██╔════╝
+ ██║     ███████║██║  ██║██║   ██║██║     █████╗  ██║   ██║███████╗
+ ██║     ██╔══██║██║  ██║██║   ██║██║     ██╔══╝  ██║   ██║╚════██║
+ ╚██████╗██║  ██║██████╔╝╚██████╔╝╚██████╗███████╗╚██████╔╝███████║
+  ╚═════╝╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝╚══════╝ ╚═════╝╚══════╝
+              ~~  General ER Triage Overview System  ~~
+"""
+
+def print_banner():
+    print(CADUCEUS_ART)
+
+# ── triage config ──────────────────────────────────────────────────────────────
+TRIAGE = {
+    1: {"color": "RED",    "hex": "#D50000", "label": "Critical",  "priority": "Immediate"},
+    2: {"color": "RED",    "hex": "#D50000", "label": "Severe",    "priority": "High"},
+    3: {"color": "ORANGE", "hex": "#FF6D00", "label": "Moderate",  "priority": "Medium"},
+    4: {"color": "YELLOW", "hex": "#FFD600", "label": "Minor",     "priority": "Low"},
+    5: {"color": "YELLOW", "hex": "#FFD600", "label": "Minimal",   "priority": "Very Low"},
+}
+
+RISK = {
+    "fracture": 2, "break": 2, "laceration": 3, "bruise": 5, "sprain": 4,
+    "strain": 4,   "burn": 2,  "concussion": 1, "dislocation": 3, "cut": 4,
+    "abrasion": 5, "contusion": 4, "puncture": 3, "crush": 1, "nerve": 2,
+    "head": 1,     "spine": 1, "chest": 2, "abdomen": 3, "shoulder": 3,
+    "knee": 4,     "ankle": 4, "wrist": 4, "finger": 5,
+}
+
+ANSI  = {"RED": "\033[91m", "ORANGE": "\033[33m", "YELLOW": "\033[93m"}
+BOLD  = "\033[1m";  DIM = "\033[2m";  WHITE = "\033[97m";  RESET = "\033[0m"
+
+DB_PATH = "Simulated Patient Data w_traveltime.csv"
+
+# ── helpers ────────────────────────────────────────────────────────────────────
+def cprint(text, color, bold=False):
+    print(f"{BOLD if bold else ''}{ANSI.get(color,'')}{text}{RESET}")
+
+def ai_ref(injury_name, user_int):
+    low = injury_name.lower()
+    matched, risk = [], 0
+
+    for kw, r in RISK.items():
+        if kw in low:
+            matched.append(kw)
+            risk = max(risk, r)
+
+    # Always blend user intensity and AI risk
+    eff = max(1, min(5, round(0.6 * user_int + 0.4 * risk)))
+
+    t = TRIAGE[eff]
+    return {
+        "injury": injury_name,
+        "user_intensity": user_int,
+        "ai_risk": risk,
+        "effective_intensity": eff,
+        "matched": matched,
+        "color": t["color"],
+        "label": t["label"],
+        "priority": t["priority"]
+    }
+
+def load_db():
+    patients = []
+    try:
+        with open(DB_PATH, newline='', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+
+                # DOB
+                dob_raw = row.get("DOB")
+                try:
+                    row["DOB"] = parser.parse(dob_raw) if dob_raw else None
+                except:
+                    row["DOB"] = None
+
+                # Arrival time
+                at_raw = row.get("Arrival_Time")
+                try:
+                    row["Arrival_Time"] = parser.parse(at_raw) if at_raw else None
+                except:
+                    row["Arrival_Time"] = None
+
+                # Triage level
+                try:
+                    row["Triage_Level"] = int(str(row.get("Triage_Level", "")).strip())
+                except:
+                    row["Triage_Level"] = 3  # safe default
+
+                patients.append(row)
+
+    except FileNotFoundError:
+        print("\nERROR: Database file not found. Continuing without DB.\n")
+
+    return patients
+
+def calc_age(dob):
+    if not dob:
+        return "Unknown"
+    today = datetime.today()
+    return today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+
+# ── profile card ───────────────────────────────────────────────────────────────
+def print_profile(data, injuries=None, overall=None, from_db=False):
+    W = 52
+
+    def bar(ch="═"): print(f"{BOLD}{ch * W}{RESET}")
+    def blank(): print(f"{BOLD}║{RESET}{' ' * (W - 2)}{BOLD}║{RESET}")
+
+    def row(label, value):
+        value = str(value)
+        pad = W - 2 - 16 - len(value)
+        print(f"{BOLD}║{RESET}  {label:<16}{WHITE}{BOLD}{value}{RESET}{' ' * max(1, pad)}{BOLD}║{RESET}")
+
+    def title_row(text):
+        pad = (W - 2 - len(text)) // 2
+        print(f"{BOLD}║{RESET}{' ' * pad}{WHITE}{BOLD}{text}{RESET}{' ' * (W - 2 - pad - len(text))}{BOLD}║{RESET}")
+
+    print(f"\n{BOLD}╔{'═' * W}╗{RESET}")
+    title_row("CADUCEUS  PATIENT  PROFILE")
+    print(f"{BOLD}╠{'═' * W}╣{RESET}")
+    blank()
+
+    if from_db:
+        dob = data["DOB"]
+        age = calc_age(dob)
+        tl  = data["Triage_Level"]
+        t   = TRIAGE[tl]
+
+        row("ID:", data.get("Patient_ID", "Unknown"))
+        row("First Name:", data.get("First_Name", "Unknown"))
+        row("Last Name:", data.get("Last_Name", "Unknown"))
+        row("Date of Birth:", dob.strftime('%B %d, %Y') if dob else "Unknown")
+        row("Age:", age)
+        row("Sex:", "Male" if data.get("Sex") == "M" else "Female")
+
+        blank()
+        print(f"{BOLD}╠{'─' * W}╣{RESET}")
+        title_row("EXISTING RECORD")
+        print(f"{BOLD}╠{'─' * W}╣{RESET}")
+        blank()
+
+        row("Complaint:", data.get("Injury_or_Complaint", "Unknown"))
+        at = data["Arrival_Time"]
+        row("Arrived:", at.strftime('%Y-%m-%d %H:%M') if at else "Unknown")
+        row("Arrival Mode:", data.get("Arrival_Mode", "Unknown"))
+        row("Status:", data.get("Current_Status", "Unknown"))
+
+        blank()
+        print(f"{BOLD}╠{'═' * W}╣{RESET}")
+        ov = f"  TRIAGE LEVEL {tl}  ·  {t['label'].upper()}  ·  Priority: {t['priority']}"
+        pad = W - 2 - len(ov)
+        print(f"{BOLD}║{WHITE}{BOLD}{ov}{RESET}{' ' * pad}{BOLD}║{RESET}")
+
+    else:
+        row("First Name:", data["first"])
+        row("Last Name:", data["last"])
+        row("Age:", data["age"])
+        row("Gender:", data["gender"])
+
+        blank()
+        print(f"{BOLD}╠{'─' * W}╣{RESET}")
+        title_row("NEW INJURY REPORT")
+        print(f"{BOLD}╠{'─' * W}╣{RESET}")
+        blank()
+
+        for idx, inj in enumerate(injuries, 1):
+            tag = f"{inj['color']} — {inj['label']}"
+            line = f"  {idx}. {inj['injury']}"
+            pad = W - len(line) - len(tag) - 2
+            print(f"{BOLD}║{RESET}{WHITE}{BOLD}{line}{RESET}{' ' * max(1, pad)}{BOLD}{tag}{RESET}  {BOLD}║{RESET}")
+
+            if inj["matched"]:
+                kw = f"     AI flagged: {', '.join(inj['matched'])}"
+                print(f"{BOLD}║{RESET}{DIM}{kw}{RESET}{' ' * (W - 2 - len(kw))}{BOLD}║{RESET}")
+
+        blank()
+        print(f"{BOLD}╠{'═' * W}╣{RESET}")
+        ov = f"  OVERALL: {overall['color']} — {overall['label'].upper()}  ·  Priority: {overall['priority']}"
+        pad = W - 2 - len(ov)
+        print(f"{BOLD}║{WHITE}{BOLD}{ov}{RESET}{' ' * pad}{BOLD}║{RESET}")
+
+    ts = datetime.now().strftime("%Y-%m-%d  %H:%M:%S")
+    tsl = f"  Generated: {ts}"
+    print(f"{BOLD}║{RESET}{DIM}{tsl}{RESET}{' ' * (W - 2 - len(tsl))}{BOLD}║{RESET}")
+    print(f"{BOLD}╚{'═' * W}╝{RESET}\n")
+
+# ── login flow ─────────────────────────────────────────────────────────────────
+def login(db):
+    print("\n  ── Existing Patient Login ──")
+    print(f"  {DIM}Use your Patient ID and last name to log in.{RESET}\n")
+
+    while True:
+        pid = input("  Patient ID:   ").strip()
+        if pid.lower() == 'q':
+            return None
+
+        match = [p for p in db if p.get("Patient_ID") == pid]
+        if not match:
+            print("  Patient ID not found. Try again or type 'q' to go back.\n")
+            continue
+
+        patient = match[0]
+        last = input("  Last Name:    ").strip().lower()
+        if last == 'q':
+            return None
+
+        if patient.get("Last_Name", "").lower() != last:
+            print("  Last name does not match. Try again.\n")
+            continue
+
+        print(f"\n  {BOLD}Welcome back, {patient.get('First_Name', 'Patient')}!{RESET}")
+        return patient
+
+# ── new patient intake ─────────────────────────────────────────────────────────
+def new_patient_intake():
+    first = input("enter your first name:  ").strip()
+    if first.lower() == 'q':
+        return None
+
+    last = input("enter your last name:  ").strip()
+    if last.lower() == 'q':
+        return None
+
+    while True:
+        age_input = input("Enter your age: ").strip()
+        if age_input.lower() == 'q':
+            return None
+        try:
+            age = int(age_input)
+            if age <= 0:
+                print("Age must be positive. Try again.")
+                continue
+            break
+        except ValueError:
+            print("invalid age. please enter a number")
+
+    gender = input("enter your gender (Male / Female / Non-Binary): ").strip()
+    if gender.lower() == 'q':
+        return None
+
+    while True:
+        num_input = input("How many injuries are you reporting? (1-3): ").strip()
+        if num_input.lower() == 'q':
+            return None
+        try:
+            n = int(num_input)
+            if 1 <= n <= 3:
+                break
+            print("Please enter a number between 1 and 3.")
+        except ValueError:
+            print("invalid input. please enter a number")
+
+    injuries = []
+    for i in range(1, n + 1):
+        print(f"\n  -- Injury {i} of {n} --")
+        while True:
+            inj = input(f"  describe injury {i}:  ").strip()
+            if inj.lower() == 'q':
+                return None
+            if inj:
+                break
+            print("  injury description cannot be empty.")
+
+        while True:
+            iv = input("  intensity (1=Minimal  2=Minor  3=Moderate  4=Severe  5=Critical):  ").strip()
+            if iv.lower() == 'q':
+                return None
+            try:
+                intensity = int(iv)
+                if 1 <= intensity <= 5:
+                    break
+                print("  please enter a number between 1 and 5.")
+            except ValueError:
+                print("  invalid input. please enter a number")
+
+        r = ai_ref(inj, intensity)
+        injuries.append(r)
+        cprint(f"  > {r['color']} -- {r['label']} (Priority: {r['priority']})", r["color"])
+        if r["matched"]:
+            print(f"    AI flagged: {', '.join(r['matched'])}")
+
+    overall = TRIAGE[max(r["effective_intensity"] for r in injuries)]
+    return {
+        "first": first,
+        "last": last,
+        "age": age,
+        "gender": gender,
+        "injuries": injuries,
+        "overall": overall
+    }
+
+# ── main ───────────────────────────────────────────────────────────────────────
+def run_survey():
+    responses = []
+    db = load_db()
+
+    print(f"\n{BOLD}Welcome to the general caduceus overview{RESET}")
+    print("Type 'q' at any time to quit.\n")
+
+    while True:
+        print(f"{BOLD}─── Main Menu ───{RESET}")
+        print("  1. Existing patient login")
+        print("  2. New patient intake")
+        print("  q. Quit\n")
+
+        choice = input("Select an option: ").strip().lower()
+        if choice == 'q':
+            break
+
+        if choice == '1':
+            row = login(db)
+            if row is None:
+                continue
+            print_profile(row, from_db=True)
+
+        elif choice == '2':
+            data = new_patient_intake()
+            if data is None:
+                continue
+            print_profile(data, injuries=data["injuries"], overall=data["overall"], from_db=False)
+
+            record = {
+                "record_id": f"CDX-{datetime.now().strftime('%Y%m%d%H%M%S')}",
+                "timestamp": datetime.now().isoformat(),
+                "patient": {
+                    "first_name": data["first"],
+                    "last_name": data["last"],
+                    "age": data["age"],
+                    "gender": data["gender"]
+                },
+                "injuries": data["injuries"],
+                "overall_triage": data["overall"],
+                "ui_meta": {
+                    "badge_color": data["overall"]["hex"],
+                    "alert_level": data["overall"]["color"],
+                    "injury_count": len(data["injuries"])
+                },
+            }
+            responses.append(record)
+
+        else:
+            print("  Invalid option. Enter 1, 2, or q.\n")
+            continue
+
+        again = input("Return to main menu? (y/n):  ").strip().lower()
+        if again != 'y':
+            break
+
+    if responses:
+        with open("caduceus_output.json", "w") as f:
+            json.dump(responses, f, indent=2)
+        print(f"\n{len(responses)} new record(s) saved to caduceus_output.json")
+
+    print("\nThank you for using the Caduceus Overview. Goodbye.\n")
+    return responses
+
+
+if __name__ == "__main__":
+    run_survey()
