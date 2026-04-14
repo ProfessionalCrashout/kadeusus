@@ -1,0 +1,61 @@
+Staff_Name,Role,Shift_Hours,Assigned_Area,Area_Total_Beds,Area_Available_Beds,Free_For_New_Patient,Hospital_Letter
+Dr. Sarah Chen,Doctor,07:00-19:00,Trauma,4,1,Yes,A
+RN Marcus Vance,Nurse,07:00-19:00,Trauma,4,1,No,A
+RN Chloe Price,Nurse,07:00-19:00,Trauma,4,1,Yes,A
+Dr. Michael Brown,Doctor,07:00-19:00,Acute Care,10,2,No,A
+RN David Johnson,Nurse,07:00-19:00,Acute Care,10,2,Yes,A
+RN Priya Patel,Nurse,07:00-19:00,Acute Care,10,2,No,A
+Dr. John Carter,Doctor,07:00-19:00,Fast Track,6,4,Yes,A
+RN Susan Lewis,Nurse,07:00-19:00,Fast Track,6,4,Yes,A
+RN Richard Fox,Nurse,07:00-19:00,Fast Track,6,4,Yes,A
+Dr. Meredith Grey,Doctor,07:00-19:00,Triage,3,0,No,A
+RN Thomas Hall,Nurse,07:00-19:00,Triage,3,0,No,A
+Dr. Gregory House,Doctor,19:00-07:00,Trauma,4,3,Yes,A
+RN Allison Cameron,Nurse,19:00-07:00,Trauma,4,3,Yes,A
+RN Robert Chase,Nurse,19:00-07:00,Trauma,4,3,No,A
+Dr. Lisa Cuddy,Doctor,19:00-07:00,Acute Care,10,6,Yes,A
+RN Eric Foreman,Nurse,19:00-07:00,Acute Care,10,6,Yes,A
+RN James Wilson,Nurse,19:00-07:00,Acute Care,10,6,Yes,A
+Dr. Peter Benton,Doctor,19:00-07:00,Fast Track,6,5,Yes,A
+RN Carol Hathaway,Nurse,19:00-07:00,Fast Track,6,5,Yes,A
+RN Abby Lockhart,Nurse,19:00-07:00,Fast Track,6,5,Yes,A
+Dr. Mark Greene,Doctor,19:00-07:00,Triage,3,1,Yes,A
+RN Samantha Taggart,Nurse,19:00-07:00,Triage,3,1,No,A
+Dr. Alan Grant,Doctor,06:00-18:00,Critical Care,5,0,No,B
+RN Ellie Sattler,Nurse,06:00-18:00,Critical Care,5,0,No,B
+RN Ian Malcolm,Nurse,06:00-18:00,Critical Care,5,0,No,B
+Dr. John Hammond,Doctor,06:00-18:00,Main ED,15,4,Yes,B
+RN Ray Arnold,Nurse,06:00-18:00,Main ED,15,4,Yes,B
+RN Dennis Nedry,Nurse,06:00-18:00,Main ED,15,4,No,B
+Dr. Henry Wu,Doctor,06:00-18:00,Pediatrics,8,3,Yes,B
+RN Robert Muldoon,Nurse,06:00-18:00,Pediatrics,8,3,Yes,B
+Dr. Lex Murphy,Doctor,06:00-18:00,Urgent Care,10,8,Yes,B
+RN Tim Murphy,Nurse,06:00-18:00,Urgent Care,10,8,Yes,B
+Dr. Dana Scully,Doctor,18:00-06:00,Critical Care,5,2,Yes,B
+RN Fox Mulder,Nurse,18:00-06:00,Critical Care,5,2,Yes,B
+RN Walter Skinner,Nurse,18:00-06:00,Critical Care,5,2,No,B
+Dr. John Doggett,Doctor,18:00-06:00,Main ED,15,1,No,B
+RN Monica Reyes,Nurse,18:00-06:00,Main ED,15,1,Yes,B
+RN Alex Krycek,Nurse,18:00-06:00,Main ED,15,1,No,B
+Dr. Arthur Dales,Doctor,18:00-06:00,Pediatrics,8,6,Yes,B
+RN Richard Langly,Nurse,18:00-06:00,Pediatrics,8,6,Yes,B
+Dr. Melvin Frohike,Doctor,18:00-06:00,Urgent Care,10,9,Yes,B
+RN John Byers,Nurse,18:00-06:00,Urgent Care,10,9,Yes,B
+Dr. John Dorian,Doctor,08:00-20:00,General ED,12,5,Yes,C
+RN Elliot Reid,Nurse,08:00-20:00,General ED,12,5,Yes,C
+RN Carla Espinosa,Nurse,08:00-20:00,General ED,12,5,No,C
+Dr. Christopher Turk,Doctor,08:00-20:00,Trauma,3,0,No,C
+RN Laverne Roberts,Nurse,08:00-20:00,Trauma,3,0,No,C
+Dr. Perry Cox,Doctor,08:00-20:00,Psychiatric ER,4,1,Yes,C
+RN Paul Flowers,Nurse,08:00-20:00,Psychiatric ER,4,1,Yes,C
+Dr. Bob Kelso,Doctor,08:00-20:00,Fast Track,8,8,Yes,C
+RN Todd Quinlan,Nurse,08:00-20:00,Fast Track,8,8,Yes,C
+Dr. Will Halstead,Doctor,20:00-08:00,General ED,12,2,No,C
+RN Maggie Lockwood,Nurse,20:00-08:00,General ED,12,2,Yes,C
+RN April Sexton,Nurse,20:00-08:00,General ED,12,2,No,C
+Dr. Connor Rhodes,Doctor,20:00-08:00,Trauma,3,1,Yes,C
+RN Natalie Manning,Nurse,20:00-08:00,Trauma,3,1,Yes,C
+Dr. Daniel Charles,Doctor,20:00-08:00,Psychiatric ER,4,2,Yes,C
+RN Ethan Choi,Nurse,20:00-08:00,Psychiatric ER,4,2,Yes,C
+Dr. Sarah Reese,Doctor,20:00-08:00,Fast Track,8,6,Yes,C
+RN Noah Sexton,Nurse,20:00-08:00,Fast Track,8,6,Yes,C
